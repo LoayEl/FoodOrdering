@@ -3,23 +3,33 @@ import { Image,Text,View, StyleSheet, Platform } from 'react-native';
 import {Colors} from '../../constants/Colors';
 import products from '../../../assets/data/products';
 
-const product=products[1];
-
 import { HelloWave } from '@/src/components/HelloWave';
 import ParallaxScrollView from '@/src/components/ParallaxScrollView';
 import { ThemedText } from '@/src/components/ThemedText';
 import { ThemedView } from '@/src/components/ThemedView';
+const product=products[1];
 
-
-export default function HomeScreen() {
-  return (
+const ProductListItem=({product})=>{
+  return(
     <View style={styles.container}>
 <Image source={{ uri: product.image}}  style={styles.image}/>
 
           <Text style={styles.title}>{product.name}</Text>
           <Text style={styles.price}>{product.price}</Text>
     </View>
-     );
+
+  );
+}
+
+
+
+
+export default function MenuScreen() {
+  return (<View> 
+    <ProductListItem product={products[5]}/>
+    <ProductListItem product={products[1]}/>
+    
+  </View>);
 }
 
 const styles = StyleSheet.create({
@@ -31,7 +41,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor:'white',
     padding:10,
-    borderRadius:1,
+    borderRadius:10,
   },
   title:{
     fontSize:18, 
